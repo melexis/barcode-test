@@ -11,4 +11,8 @@ class Lot {
         hasMany
 
     }
+
+    public String toString() {
+        "${name}"
+    }
 }

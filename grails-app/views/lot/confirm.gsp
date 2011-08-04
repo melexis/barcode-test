@@ -12,6 +12,10 @@
             <td>Lotname</td>
             <td><%=lotname%></td>
           </tr>
+          <tr>
+            <td>Condition</td>
+            <td><%=condition%></td>
+          </tr>
         </table>
       </div>
     </div>

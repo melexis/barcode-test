@@ -11,4 +11,8 @@ class Tester {
 
     static constraints = {
     }
+
+    public String toString() {
+        "Tester ${name}@${site} ${address}"
+    }
 }

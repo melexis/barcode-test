@@ -17,7 +17,7 @@ class LotController {
         def condition = parts[1]
 
         def result = testsessionService.associateLotAndConditionWithUser(lotname, condition, session.user.username)
-        render(view: 'confirm', model: ['lotname': lotname])
+        render(view: 'confirm', model: ['lotname': lotname, 'condition': condition])
     }
 
     def list = {

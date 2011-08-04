@@ -8,4 +8,8 @@ class TestCell {
 
     static constraints = {
     }
+
+    public String toString() {
+        name
+    }
 }

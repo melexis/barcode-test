@@ -26,10 +26,10 @@ class TestSessionService {
 
         def addresses = testcell?.testers*.address
         def condition = lot?.conditions.find {cond -> cond.name == session.condition}
-        def command = condition?.condProperties.find {prop -> prop.key == 'cmd'}.value
+        def command = condition?.condProperties.find {prop -> prop.key == 'cmd'}?.value
 
         addresses?.each {
-            address -> sshservice.executeOnHost(address, command)
+            address -> sshservice.executeOnHost(address, command, 'shiftl')
         }
     }
 

@@ -9,4 +9,8 @@ class Condition {
 
     static constraints = {
     }
+
+    public String toString() {
+        name
+    }
 }

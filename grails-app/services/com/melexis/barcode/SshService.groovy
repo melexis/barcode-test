@@ -10,8 +10,8 @@ class SshService {
     def retry_interval = 500l
     def thread = null
 
-    def executeOnHost(String address, String command) {
-        def session = openSession(address)
+    def executeOnHost(String address, String command, String username=System.getProperty("user.name")) {
+        def session = openSession(address, username)
         executeCommand(session, command)
     }
 
@@ -43,11 +43,11 @@ class SshService {
         out.toString()
     }
 
-    def openSession(String hostname) {
-        String username = System.getProperty("user.name")
+    def openSession(String hostname, String username=System.getProperty("user.name")) {
         JSch jsch = new JSch()
-        jsch.setKnownHosts("/home/${username}/.ssh/known_hosts")
-        jsch.addIdentity("/home/${username}/.ssh/id_rsa")
+        String runningAs = System.getProperty("user.name")
+        jsch.setKnownHosts("/home/${runningAs}/.ssh/known_hosts")
+        jsch.addIdentity("/home/${runningAs}/.ssh/id_rsa")
 
         Session session = jsch.getSession(username, hostname, 22)
         session.connect()

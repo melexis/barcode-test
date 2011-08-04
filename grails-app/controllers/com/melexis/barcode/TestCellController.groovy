@@ -12,9 +12,13 @@ class TestCellController {
     def associate = {
         def testcell = params.code
 
-        def result = testsessionService.associateTestcellWithUser(testcell, session.user.username)
-        def testsession = testsessionService.testsessionForUser(session.user.username)
-        render(view: 'confirm', model: ['testsession': testsession])
+        if (testsessionService.testsessionForUser(session.user.username) == null) {
+            render(view: 'associate_lot')
+        } else {
+            def result = testsessionService.associateTestcellWithUser(testcell, session.user.username)
+            def testsession = testsessionService.testsessionForUser(session.user.username)
+            render(view: 'confirm', model: ['testsession': testsession])
+        }
     }
 
     def cancel = {
